@@ -9,7 +9,7 @@ func SearchWords(slice []string, s string) []string {
 	var r []string
 	for _, x := range slice {
 		for _, y := range strarr {
-			if strings.Contains(x, y) && !slicecontains(r, x) {
+			if strings.Contains(strings.ToLower(x), strings.ToLower(y)) && !slicecontains(r, strings.ToLower(x)) {
 				r = append(r, x)
 			}
 		}
@@ -20,7 +20,7 @@ func SearchWords(slice []string, s string) []string {
 func slicecontains(s []string, ss string) bool {
 	for _, x := range s {
 
-		if x == ss {
+		if strings.EqualFold(strings.ToLower(x), strings.ToLower(ss)) {
 			return true
 		}
 	}
